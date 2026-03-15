@@ -27,6 +27,9 @@ export default defineConfig({
         ...Object.keys(devDependencies),
         'react/jsx-runtime',
       ],
+      output: {
+        assetFileNames: 'style[extname]',
+      },
     },
     sourcemap: true,
     target: 'esnext',
