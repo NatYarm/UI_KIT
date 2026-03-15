@@ -1,5 +1,5 @@
 /// <reference types="vitest/config" />
-import react from '@vitejs/plugin-react';
+
 import { defineConfig } from 'vite';
 
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
@@ -14,12 +14,12 @@ const dirname =
     : path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  plugins: [react()],
   build: {
     lib: {
       entry: path.resolve(dirname, 'src/index.ts'),
       formats: ['es'],
       fileName: 'index',
+      name: 'UI-KIT',
     },
     rollupOptions: {
       external: [
@@ -28,6 +28,8 @@ export default defineConfig({
         'react/jsx-runtime',
       ],
     },
+    sourcemap: true,
+    target: 'esnext',
   },
   test: {
     projects: [
