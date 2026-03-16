@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
-import s from './pagination.module.scss';
+import s from './Pagination.module.scss';
 
 import { SelectBox, SelectItem } from '../select-box';
 import { usePagination } from './hooks/usePagination';
