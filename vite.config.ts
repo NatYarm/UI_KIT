@@ -31,7 +31,6 @@ export default defineConfig({
         assetFileNames: 'style[extname]',
       },
     },
-    sourcemap: true,
     target: 'esnext',
   },
   test: {

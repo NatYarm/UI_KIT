@@ -1,0 +1,44 @@
+import { ComponentProps, useId } from 'react';
+import clsx from 'clsx';
+import s from './TextArea.module.scss';
+
+export type TextAreaProps = {
+  label?: string;
+  error?: string;
+  wrapperClassName?: string;
+  textAreaClassName?: string;
+} & ComponentProps<'textarea'>;
+
+export const TextArea = (props: TextAreaProps) => {
+  const {
+    label,
+    error,
+    className,
+    textAreaClassName,
+    wrapperClassName,
+    ...rest
+  } = props;
+
+  const id = useId();
+
+  return (
+    <div className={clsx(s.container, className)}>
+      {label && (
+        <label className={s.label} htmlFor={id} aria-disabled={rest.disabled}>
+          {label}
+        </label>
+      )}
+
+      <div className={clsx(s.wrapper, error && s.error, wrapperClassName)}>
+        <textarea
+          id={id}
+          className={clsx(s.textArea, textAreaClassName)}
+          data-value={!!rest.value}
+          {...rest}
+        />
+      </div>
+
+      {error && <span className={s.errorText}>{error}</span>}
+    </div>
+  );
+};

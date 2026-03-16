@@ -1,0 +1,62 @@
+.fullscreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+  min-height: 100px;
+}
+
+.inline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 30px 0;
+}
+
+.message {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--color-light-100);
+  text-align: center;
+}
+
+.spinner {
+  will-change: transform;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+
+  border: 2px solid #6f00ff;
+  border-top-color: #8a2be2;
+  border-radius: 50%;
+
+  animation: spin 1.5s ease-in-out infinite;
+
+  &.reduced {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 15px rgba(11, 199, 227, 50%);
+  }
+
+  100% {
+    transform: rotate(720deg);
+    opacity: 0.7;
+  }
+}
