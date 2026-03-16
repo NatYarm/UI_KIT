@@ -1,8 +1,8 @@
-import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
+import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
 
-import { clsx } from 'clsx'
+import { clsx } from 'clsx';
 
-import s from './button.module.scss'
+import s from './Button.module.scss';
 
 const buttonVariant = [
   'primary',
@@ -13,27 +13,29 @@ const buttonVariant = [
   'icon',
   'comment',
   'clean',
-] as const
+] as const;
 
-type ButtonVariant = (typeof buttonVariant)[number]
+type ButtonVariant = (typeof buttonVariant)[number];
 
-const buttonSize = ['small', 'medium', 'large'] as const
+const buttonSize = ['small', 'medium', 'large'] as const;
 
-type ButtonSize = (typeof buttonSize)[number]
+type ButtonSize = (typeof buttonSize)[number];
 
 type ButtonProps<T extends ElementType = 'button'> = {
-  as?: T
-  className?: string
-  customStyles?: boolean
-  endIcon?: ReactNode
-  fullWidth?: boolean
-  noPadding?: boolean
-  size?: ButtonSize
-  startIcon?: ReactNode
-  variant?: ButtonVariant
-} & ComponentPropsWithoutRef<T>
+  as?: T;
+  className?: string;
+  customStyles?: boolean;
+  endIcon?: ReactNode;
+  fullWidth?: boolean;
+  noPadding?: boolean;
+  size?: ButtonSize;
+  startIcon?: ReactNode;
+  variant?: ButtonVariant;
+} & ComponentPropsWithoutRef<T>;
 
-export const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>) => {
+export const Button = <T extends ElementType = 'button'>(
+  props: ButtonProps<T>,
+) => {
   const {
     as: Component = 'button',
     children,
@@ -46,7 +48,7 @@ export const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>) 
     startIcon,
     variant = 'primary',
     ...rest
-  } = props
+  } = props;
 
   const classNames = clsx(
     s.button,
@@ -54,8 +56,8 @@ export const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>) 
     !customStyles && s[size],
     fullWidth && s.fullWidth,
     noPadding && s.noPadding,
-    className
-  )
+    className,
+  );
 
   return (
     <Component className={classNames} {...rest}>
@@ -63,5 +65,5 @@ export const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>) 
       {children}
       {endIcon && <span className={s.endIcon}>{endIcon}</span>}
     </Component>
-  )
-}
+  );
+};
